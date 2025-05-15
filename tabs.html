@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabs</title>
+    <link rel="stylesheet" href="./css/bootstrap.css" />
+    <script src="./js/bootstrap.bundle.js"></script>
+    <link rel="stylesheet" href="./css/tabs.css" />
+    <script>
+        window.addEventListener('DOMContentLoaded', function(){
+            const tabs = document.querySelectorAll('#person .nav-item .nav-link');
+            console.log(tabs);
+            tabs.forEach(a=>{
+                a.addEventListener('click', function(event){
+                    event.preventDefault();
+                    event.stopPropagation();
+                    const target = this.dataset.target;
+                    document.querySelectorAll('.tabInfo').forEach(tab=>{
+                        tab.classList.add('hidden');
+                    })
+                    document.getElementById(target).classList.remove('hidden');
+                    console.log(this.classList);
+                    
+                    document.querySelectorAll('#person a').forEach(a=>{
+                        a.classList.remove('active')
+                    });
+                    this.classList.add('active');
+                });
+            });
+        });
+    </script>
+</head>
+
+<body>
+
+    <body class="bg-dark text-white" data-bs-theme="dark">
+        <header class="bg-dark text-white" data-bs-theme="dark" style="height: 50px;">
+            <div class="container">
+                <h1>Tabs</h1>
+            </div>
+        </header>
+        <div style="height:calc(100vh - 100px);overflow-y: auto;">
+            <nav>
+                <div class="container">
+                    <a href="./">Galerie</a> | <a href="./carousel.html">Carousel</a> | <a href="./chartjs.html">Chart
+                        Js</a> | <a href="./tabs.html">Tabs</a>
+                </div>
+            </nav>
+            <main class="container">
+                <section>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <p>
+                                <span id="affichage">&nbsp;</span>
+                            </p>
+                            <ul id="choix">
+                                <li><a href="#"><b>TOTO</b></a></li>
+                                <li><a href="#"><i>TITI</i></a></li>
+                                <li><a href="#"><s>TATA</s></a></li>
+                            </ul>
+                            <p>
+                                Surveiller le clic sur les liens
+                            </p>
+                            <script>
+                                /* récupérer les liens concernés, grace par exemple au querySelectorAll */
+                                /* 
+                                le sélecteur css "ul#choix a" indique que l'on cherche tous les liens à l'intérieur d'un élément ul qui a l'id choix
+                                */
+                                document.querySelectorAll('ul#choix a').forEach(function(lien){
+                                    /* j'abonne à l'écouteur dévénement "click" chacun des liens récupérés */
+                                    lien.addEventListener('click', function(event){
+                                        /*
+                                        quand on clique sur un des lien, on récupère l'événement, ici "click" 
+                                        pour pouvoir stopper le comportement par défaut de l'événement clic sur lien
+                                        */
+                                        event.preventDefault();
+                                        /* pour stopper la propagation du clic sur les éléments parent du lien cliqué */
+                                        event.stopPropagation();
+                                        /* 
+                                        je remplace ensuite le HTML à l'intérieur de l'élément avec l'id "affichage"
+                                        par celui du lien que l'on viens de cliquer, 
+                                        représenté par this
+                                        */
+                                        document.getElementById('affichage').innerHTML = this.innerHTML;                                        
+                                    });
+                                });
+                            </script>
+                        </div>
+                    </div>
+                </section>
+                <section class="row my-2">
+                    <div class="col-lg-6">
+                        <ul class="nav nav-tabs" id="person">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#" data-target="bio">Bio</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" data-target="books">Best Sellers</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"  data-target="picture">Portrait</a>
+                            </li>
+                        </ul>
+                        <div id="bio" class="tabInfo">
+                            <h2>Bio</h2>
+                            <p>
+                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Animi quibusdam totam, sit officiis vel alias quaerat soluta reiciendis! Sequi enim delectus at voluptas! Amet dicta excepturi id consequuntur ducimus maxime.
+                            </p>
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat nisi iste accusamus, nesciunt natus architecto hic sed, sunt nulla eveniet consectetur consequatur porro omnis rerum esse autem ducimus ipsam laudantium!
+                            </p>
+                        </div>
+                        <div id="books" class="tabInfo hidden">
+                            <h2>Books</h2>
+                            <ul>
+                                <li>sqddfwdffvb</li>
+                                <li>sqddfwdffvb</li>
+                                <li>sqddfwdffvb</li>
+                                <li>sqddfwdffvb</li>
+                                <li>sqddfwdffvb</li>
+                                <li>sqddfwdffvb</li>
+                                <li>sqddfwdffvb</li>
+                            </ul>
+                        </div>
+                        <div id="picture" class="tabInfo hidden">
+                            <h2>Portrait</h2>
+                            <img src="./galerie/20070830/sorcier01.jpg" class="img-fluid" />
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+        <footer class="bg-dark text-white" style="height: 50px;">
+            <div class="container ">
+                &copy; H.O.P.
+            </div>
+        </footer>
+    </body>
+
+</html>
