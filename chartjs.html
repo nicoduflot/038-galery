@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chart Js</title>
+    <link rel="stylesheet" href="./css/bootstrap.css" />
+    <script src="./js/bootstrap.bundle.js"></script>
+    <script src="./js/chart.js"></script>
+    <script>
+        window.addEventListener('DOMContentLoaded', function () {
+
+            const ctx = document.getElementById('myChart');
+
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                    datasets: [{
+                        label: '# of Votes',
+                        data: [12, 19, 3, 5, 2, 3],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+            /*
+            const myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: [
+                        'Sunday',
+                        'Monday',
+                        'Tuesday',
+                        'Wednesday',
+                        'Thursday',
+                        'Friday',
+                        'Saturday'
+                    ],
+                    datasets: [{
+                        data: [
+                            15339,
+                            21345,
+                            18483,
+                            24003,
+                            23489,
+                            24092,
+                            12034
+                        ],
+                        lineTension: 0,
+                        backgroundColor: 'transparent',
+                        borderColor: '#007bff',
+                        borderWidth: 4,
+                        pointBackgroundColor: '#007bff'
+                    }]
+                },
+                options: {
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            boxPadding: 3
+                        }
+                    }
+                }
+            });
+            */
+        });
+    </script>
+</head>
+
+<body class="bg-dark text-white" data-bs-theme="dark">
+    <header class="bg-dark text-white" data-bs-theme="dark" style="height: 50px;">
+        <div class="container">
+            <h1>Chart Js</h1>
+        </div>
+    </header>
+    <div style="height:calc(100vh - 100px);overflow-y: auto;">
+        <nav>
+            <div class="container">
+                <a href="./">Galerie</a> | <a href="./carousel.html">Carousel</a> | <a href="./chartjs.html">Chart
+                    Js</a>
+            </div>
+        </nav>
+        <main class="container">
+            <canvas id="myChart" class="w-100 h-100"></canvas>
+        </main>
+    </div>
+    <footer class="bg-dark text-white" style="height: 50px;">
+        <div class="container ">
+            &copy; H.O.P.
+        </div>
+    </footer>
+</body>
+
+</html>

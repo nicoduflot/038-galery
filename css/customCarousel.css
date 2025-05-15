@@ -1,0 +1,68 @@
+.customCarousel {
+  height: 300px;
+  background-color: var(--bs-gray-dark);
+}
+
+.customCarousel img {
+  max-height: 300px;
+  width: auto;
+}
+
+.customCarousel .carousel-item{
+    text-align: center;
+}
+
+.customCarousel .carousel-inner{
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.customCarousel .carousel-item > .row > *{
+    display: flex;
+    align-items: center;
+}
+
+@media screen and (min-width: 576px) {
+  .customCarousel {
+    height: 400px;
+  }
+
+  .customCarousel img {
+    max-height: 400px;
+  }
+}
+
+/* quand la largeur d'affichage atteint ou dépasse 768px mais reste inférieur au point de rupture suivant : 992 */
+@media screen and (min-width: 768px) {
+  .customCarousel {
+    height: 500px;
+  }
+
+  .customCarousel img {
+    max-height: 500px;
+  }
+}
+
+/* quand la largeur d'affichage atteint ou dépasse 992px mais reste inférieur au point de rupture suivant : 1200 */
+@media screen and (min-width: 992px) {
+  .customCarousel {
+    height: 600px;
+  }
+
+  .customCarousel img {
+    max-height: 600px;
+  }
+}
+
+/* quand la largeur d'affichage atteint ou dépasse 1200px mais reste inférieur au point de rupture suivant : 1400 */
+@media screen and (min-width: 1200px) {
+}
+
+/* quand la largeur d'affichage atteint ou dépasse 1400px mais reste inférieur au point de rupture suivant : 1600 */
+@media screen and (min-width: 1400px) {
+}
+
+/* quand la largeur d'affichage atteint ou dépasse 1600px */
+@media screen and (min-width: 1600px) {
+}

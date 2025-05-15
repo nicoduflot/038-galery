@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>galerie</title>
+    <link rel="stylesheet" href="./css/bootstrap.css" />
+    <script src="./js/bootstrap.bundle.js"></script>
+    <script src="./js/jquery-3.7.1.js"></script>
+    <script>
+        window.addEventListener('DOMContentLoaded', function () {
+            const listFolders = [];
+            let listImgsFolder = [];
+            const dossiers = document.querySelector('#dossiers');
+            /*
+            fetch('./galerie')
+            .then(response=>{
+                console.log(response);
+                return response.text()
+            })
+            .then(data=>{
+                console.log(data);
+                
+            })
+            */
+            $.getJSON('./galerie', data => {
+                data.map((folder) => {
+                    listFolders.push(folder);
+                });
+                listFolders.map(folder => {
+                    const div = document.createElement('div');
+                    div.classList.add('col', 'border');
+                    const a = document.createElement('a');
+                    a.setAttribute('href', `./galerie/${folder}/`);
+                    a.setAttribute('data-folder', folder);
+                    a.append(document.createTextNode(folder));
+                    dossiers.append(div);
+                    div.append(a);
+                });
+
+                document.querySelectorAll('[data-folder]').forEach(link => {
+                    link.addEventListener('click', event => {
+                        event.preventDefault();
+                        event.stopPropagation();
+                        document.querySelector('.galeryTitle').innerHTML = `<b>${link.dataset.folder}</b>`;
+                        $.getJSON(`./galerie/${link.dataset.folder}`, data => {
+                            document.getElementById('pictures').innerHTML = '';
+                            data.map(picture => {
+                                if (((picture.indexOf('.jpg') > 0) || (picture.indexOf('.JPG') > 0) || (picture.indexOf('.png') > 0 )) ) {
+                                    const div = document.createElement('div');
+                                    div.classList.add('col', 'text-center');
+                                    const img = document.createElement('img');
+                                    img.setAttribute('src', `./galerie/${link.dataset.folder}/${picture}`);
+                                    img.style.setProperty('width', '200px');
+                                    img.style.setProperty('height', '200px');
+                                    img.style.setProperty('object-fit', 'cover');
+                                    img.style.setProperty('max-width', 'unset');
+                                    img.classList.add('m-2', 'customGalerie', 'img-thumbnail');
+                                    img.setAttribute('data-bs-target', '#imgModal');
+                                    img.setAttribute('data-bs-toggle', 'modal');
+                                    img.setAttribute('data-img', `./galerie/${link.dataset.folder}/${picture}`);
+                                    img.setAttribute('data-picture', `${picture}`);
+                                    div.append(img);
+                                    document.getElementById('pictures').append(div);
+                                }
+                            });
+                            document.querySelectorAll('.customGalerie').forEach(img => {
+                                img.addEventListener('click', function () {
+                                    document.getElementById('imgGalerie').setAttribute('src', img.dataset.img);
+                                    document.getElementById('modalTitle').innerText = img.dataset.picture;
+                                });
+                            });
+                        });
+                    });
+                });
+            });
+        });
+    </script>
+</head>
+
+<body class="bg-dark text-white" data-bs-theme="dark">
+    <header class="bg-dark text-white" data-bs-theme="dark" style="height: 50px;">
+        <div class="container">
+            <h1>Galerie</h1>
+        </div>
+    </header>
+    <main class="container">
+        <section class="row">
+            <article class="col-3" style="height: calc(100vh - 100px);overflow-y: auto;">
+                <nav>
+                    <a href="./">Galerie</a> | <a href="./carousel.html">Carousel</a> | <a href="./chartjs.html">Chart
+                    Js</a>
+                </nav>
+                <div id="dossiers" class="row my-2">
+
+                </div>
+            </article>
+            <article class="col" style="height: calc(100vh - 100px);overflow-y: auto;">
+                <div class="galeryTitle text-center mt-2"></div>
+                <div id="pictures" class="row">
+
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="bg-dark text-white" style="height: 50px;">
+        <div class="container ">
+            &copy; H.O.P.
+        </div>
+    </footer>
+    <div class="modal fade" id="imgModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 id="modalTitle"></h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <figure class="text-center">
+                        <img src="" class="img-fluid img-thumbnail" id="imgGalerie" />
+                    </figure>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
