@@ -1,3 +1,9 @@
 .hidden{
     display: none;
 }
+
+.custom-img-card{
+    height: 200px; 
+    object-fit: cover; 
+    object-position: center center;
+}
