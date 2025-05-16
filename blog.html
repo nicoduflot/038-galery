@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elementary</title>
+    <link rel="stylesheet" href="./css/bootstrap.css" />
+    <script src="./js/bootstrap.bundle.js"></script>
+    <link rel="stylesheet" href="./css/elementary.css" />
+    <script src="./js/movieList.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <h1 class="h3">Elementary</h1>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-end" id="navbarSupportedContent">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasNavbarDarkLabel">Offcanvas</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="./blog.html">blog</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./index.html">accueil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./carousel.html">Carousel</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./tabs.html">Tabs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./chartjs.html">Chart JS</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <main class="container">
+        <section class="row" id="movies">
+            <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
+                <div class="card custom-card">
+                    <img src="./images/hound-of-the-baskerville-hammer.jpg" class="card-img-top custom-img-card"
+                        alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title h5">Le chien des Baskervilles (Hammer)</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the card’s content.</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#" class="btn btn-primary">Lire la suite</a>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
+                <div class="card custom-card">
+                    <img src="./images/HOUND-OF-THE-BASKERVILLES-8947-scaled-680x1024.jpg"
+                        class="card-img-top custom-img-card" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title h5">Le chien des Baskervilles</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the card’s content.</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#" class="btn btn-primary">Lire la suite</a>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
+                <div class="card custom-card">
+                    <img src="./images/sherlock-holmes-and-the-voice-of-terror.jpg" class="card-img-top custom-img-card"
+                        alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title h5">La voix de la terreur</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the card’s content.</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#" class="btn btn-primary">Lire la suite</a>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
+                <div class="card custom-card">
+                    <img src="./images/the-adventures-of-sherlock-holmes.jpg" class="card-img-top custom-img-card"
+                        alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title h5">Les aventures de Sherlock Holmes</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the card’s content.</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#" class="btn btn-primary">Lire la suite</a>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="filmography" class="row">
+            <div class="col-lg-8">
+                <div class="table-responsive" id="tableResult">
+                    <table class="table table-dark table-striped">
+                        <thead>
+                            
+                        </thead>
+                        <tbody>
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div id="moviePoster">
+
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="container">
+            <span class="h5">&copy; 221b Baker Street</span>
+        </div>
+    </footer>
+</body>
+
+</html>

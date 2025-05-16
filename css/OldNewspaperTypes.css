@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'OldNewspaperTypes';
+    src: url('fonts/OldNewspaperTypes.eot');
+    src: url('fonts/OldNewspaperTypes.eot') format('embedded-opentype'),
+         url('fonts/OldNewspaperTypes.woff2') format('woff2'),
+         url('fonts/OldNewspaperTypes.woff') format('woff'),
+         url('fonts/OldNewspaperTypes.ttf') format('truetype'),
+         url('fonts/OldNewspaperTypes.svg#OldNewspaperTypes') format('svg');
+}

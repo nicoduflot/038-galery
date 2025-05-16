@@ -1,0 +1,8 @@
+
+.ratio-21x29 {
+  --bs-aspect-ratio: 142%;
+}
+
+.ratio-29x21 {
+  --bs-aspect-ratio: 71%;
+}

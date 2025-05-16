@@ -1,0 +1,57 @@
+@import url('./OldNewspaperTypes.css');
+
+:root{
+    --custom-font-face: 'OldNewspaperTypes';
+}
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, .h5, .h6{
+    font-family: var(--custom-font-face);
+}
+
+
+body{
+    background: url('../images/layout/fond-ph.jpg');
+}
+
+/* surcharge bootstrap */
+
+.offcanvas.show{
+    background-color: transparent;
+    background: url('../images/layout/fond-ph.jpg');
+}
+
+.custom-img-card{
+    height: 300px; 
+    object-fit: cover; 
+    object-position: center center;
+}
+
+#movies .card{
+     margin-left: auto;
+     margin-right: auto;
+}
+
+.custom-card{
+    background: url('../images/layout/fond-ph.jpg');
+    box-shadow: 2px 2px 5px #3333337e;
+}
+
+.custom-card .card-body{
+    height: 150px;
+    overflow: hidden;
+}
+
+#tableResult{
+    max-height: 150px; 
+    overflow-y: auto;
+}
+
+#movieposter img{
+    max-height: 400px;
+}
+
+@media screen and (min-width: 992px) {
+    #tableResult{
+        max-height: 500px; 
+    }
+}

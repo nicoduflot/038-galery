@@ -33,152 +33,154 @@
     </script>
 </head>
 
-<body>
-
-    <body class="bg-dark text-white" data-bs-theme="dark">
-        <header class="bg-dark text-white" data-bs-theme="dark" style="height: 50px;">
+<body class="bg-dark text-white" data-bs-theme="dark">
+    <header class="bg-dark text-white" data-bs-theme="dark" style="height: 50px;">
+        <div class="container">
+            <h1>Tabs</h1>
+        </div>
+    </header>
+    <div style="height:calc(100vh - 100px);overflow-y: auto;">
+        <nav>
             <div class="container">
-                <h1>Tabs</h1>
+                <a href="./">Galerie</a> | <a href="./carousel.html">Carousel</a> | <a href="./chartjs.html">Chart
+                    Js</a> | <a href="./tabs.html">Tabs</a> | <a href="./blog.html">Blog</a>
             </div>
-        </header>
-        <div style="height:calc(100vh - 100px);overflow-y: auto;">
-            <nav>
-                <div class="container">
-                    <a href="./">Galerie</a> | <a href="./carousel.html">Carousel</a> | <a href="./chartjs.html">Chart
-                        Js</a> | <a href="./tabs.html">Tabs</a>
-                </div>
-            </nav>
-            <main class="container">
-                <section>
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <h2>Repérer un clic</h2>
-                            <p>
-                                <span id="affichage">&nbsp;</span>
-                            </p>
-                            <ul id="choix">
-                                <li><a href="#"><b>TOTO</b></a></li>
-                                <li><a href="#"><i>TITI</i></a></li>
-                                <li><a href="#"><s>TATA</s></a></li>
-                            </ul>
-                            <p>
-                                Surveiller le clic sur les liens
-                            </p>
-                            <script>
-                                /* récupérer les liens concernés, grace par exemple au querySelectorAll */
-                                /* 
-                                le sélecteur css "ul#choix a" indique que l'on cherche tous les liens à l'intérieur d'un élément ul qui a l'id choix
-                                */
-                                document.querySelectorAll('ul#choix a').forEach(function (lien) {
-                                    /* j'abonne à l'écouteur dévénement "click" chacun des liens récupérés */
-                                    lien.addEventListener('click', function (event) {
-                                        /*
-                                        quand on clique sur un des lien, on récupère l'événement, ici "click" 
-                                        pour pouvoir stopper le comportement par défaut de l'événement clic sur lien
-                                        */
-                                        event.preventDefault();
-                                        /* pour stopper la propagation du clic sur les éléments parent du lien cliqué */
-                                        event.stopPropagation();
-                                        /* 
-                                        je remplace ensuite le HTML à l'intérieur de l'élément avec l'id "affichage"
-                                        par celui du lien que l'on viens de cliquer, 
-                                        représenté par this
-                                        */
-                                        document.getElementById('affichage').innerHTML = this.innerHTML;
-                                    });
-                                });
-                            </script>
-                        </div>
-                        <div class="col-lg-4">
-                            <h2>Différents événements</h2>
-                            <div class="card">
-                                <img src="./galerie/20070829/fionna01.jpg" class="card-img-top custom-img-card" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up
-                                        the bulk of the card’s content.</p>
-                                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                                </div>
-                            </div>
-                            <p>
-                                Il est possible de surveiller le curseur et son passage dans un périmètre
-                            </p>
-                            <p>
-                                On peut surveille le double clic autant que le clic
-                            </p>
-                            <script>
-                                /* on récupère toutes les images ayant la classe card-img-top qui sont dans une élément ayant la classe card */
-                                const allCardsImg = document.querySelectorAll('.card img.card-img-top');
-                                console.log(allCardsImg);
-                                /* surveiller l'entrée du curseur dans le périmètre de toutes les images top des cards */
-                                /* on parcour toutes les images */
-                                allCardsImg.forEach(function(img){
-                                    /* on abonne chaque image à un écouteur d'événement basé sur l'entrée dans le périmètre de l'image */
-                                    img.addEventListener('mouseenter', function(){
-                                        console.log(this.getAttribute('src'));
-                                    });
-                                    /* on abonne chaque image à un écouteur d'événement basé sur la sortie périmètre de l'image */
-                                    img.addEventListener('mouseleave', function(){
-                                        console.log(this.getAttribute('class'));
-                                    });
-
-                                    img.addEventListener('dblclick', function(){
-                                        console.log(img.tagName);
-                                        
-                                    });
-                                })
-                            </script>
-                            
-                            <script>
-
-                            </script>
-                        </div>
-                        <div class="col-lg-4">
-                            <h2>D'autres événements</h2>
-                            <form id="testForm">
-                                <p>
-                                    <input class="form-control" type="text" name="task" id="task" />
-                                </p>
-                            </form>
-                            <p>
-                                On peut surveiller les touches du clavier quand le curseur est dans un certain élément
-                            </p>
-                            <table class="table" id="resultSearch">
-                                <thead>
-                                    <tr>
-                                        <th>id</th>
-                                        <th>user id</th>
-                                        <th>title</th>
-                                        <th>body</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-
-                                </tbody>
-                            </table>
-                            <script>
-                                /* on surveille le relachement d'une touche quand l'utilisateur saisi des caractère dans le champ de formulaire texte nommé task */
-                                document.getElementById('task').addEventListener('keyup', function(event){
-                                    /* 
-                                    à chaque touche relachée, on compte le nombre de caractère saisis, si le nombre atteint ou dépasse 3, alors on affiche dans la console
+        </nav>
+        <main class="container">
+            <section>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h2>Repérer un clic</h2>
+                        <p>
+                            <span id="affichage">&nbsp;</span>
+                        </p>
+                        <ul id="choix">
+                            <li><a href="#"><b>TOTO</b></a></li>
+                            <li><a href="#"><i>TITI</i></a></li>
+                            <li><a href="#"><s>TATA</s></a></li>
+                        </ul>
+                        <p>
+                            Surveiller le clic sur les liens
+                        </p>
+                        <script>
+                            /* récupérer les liens concernés, grace par exemple au querySelectorAll */
+                            /* 
+                            le sélecteur css "ul#choix a" indique que l'on cherche tous les liens à l'intérieur d'un élément ul qui a l'id choix
+                            */
+                            document.querySelectorAll('ul#choix a').forEach(function (lien) {
+                                /* j'abonne à l'écouteur dévénement "click" chacun des liens récupérés */
+                                lien.addEventListener('click', function (event) {
+                                    /*
+                                    quand on clique sur un des lien, on récupère l'événement, ici "click" 
+                                    pour pouvoir stopper le comportement par défaut de l'événement clic sur lien
                                     */
-                                   const textValue = this.value;
-                                   const postSearch = [];
-                                   document.querySelector('#resultSearch tbody').innerHTML = '';
-                                    if(this.value.length >= 3){
-                                        /*
-                                        console.log(textValue);
-                                        console.log(textValue.length);
-                                        */
-                                        fetch('https://jsonplaceholder.typicode.com/posts')
-                                        .then(function(reponse){
+                                    event.preventDefault();
+                                    /* pour stopper la propagation du clic sur les éléments parent du lien cliqué */
+                                    event.stopPropagation();
+                                    /* 
+                                    je remplace ensuite le HTML à l'intérieur de l'élément avec l'id "affichage"
+                                    par celui du lien que l'on viens de cliquer, 
+                                    représenté par this
+                                    */
+                                    document.getElementById('affichage').innerHTML = this.innerHTML;
+                                });
+                            });
+                        </script>
+                    </div>
+                    <div class="col-lg-6">
+                        <h2>Différents événements</h2>
+                        <div class="card">
+                            <img src="./galerie/20070829/fionna01.jpg" class="card-img-top custom-img-card" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up
+                                    the bulk of the card’s content.</p>
+                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
+                        </div>
+                        <p>
+                            Il est possible de surveiller le curseur et son passage dans un périmètre
+                        </p>
+                        <p>
+                            On peut surveille le double clic autant que le clic
+                        </p>
+                        <script>
+                            /* on récupère toutes les images ayant la classe card-img-top qui sont dans une élément ayant la classe card */
+                            const allCardsImg = document.querySelectorAll('.card img.card-img-top');
+                            console.log(allCardsImg);
+                            /* surveiller l'entrée du curseur dans le périmètre de toutes les images top des cards */
+                            /* on parcour toutes les images */
+                            allCardsImg.forEach(function (img) {
+                                /* on abonne chaque image à un écouteur d'événement basé sur l'entrée dans le périmètre de l'image */
+                                img.addEventListener('mouseenter', function () {
+                                    console.log(this.getAttribute('src'));
+                                });
+                                /* on abonne chaque image à un écouteur d'événement basé sur la sortie périmètre de l'image */
+                                img.addEventListener('mouseleave', function () {
+                                    console.log(this.getAttribute('class'));
+                                });
+
+                                img.addEventListener('dblclick', function () {
+                                    console.log(img.tagName);
+
+                                });
+                            })
+                        </script>
+
+                        <script>
+
+                        </script>
+                    </div>
+                    <div class="col-lg-12">
+                        <h2>D'autres événements</h2>
+                        <div class="row">
+                            <div class="col-sm-6 offset-sm-3 col-md-4 offset-md-4 col-lg-2 offset-lg-5">
+                                <form id="testForm">
+                                    <p>
+                                        <input class="form-control" type="text" name="task" id="task" />
+                                    </p>
+                                </form>
+                            </div>
+                        </div>
+                        <p>
+                            On peut surveiller les touches du clavier quand le curseur est dans un certain élément
+                        </p>
+                        <table class="table" id="resultSearch">
+                            <thead>
+                                <tr>
+                                    <th>id</th>
+                                    <th>user id</th>
+                                    <th>title</th>
+                                    <th>body</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                        <script>
+                            /* on surveille le relachement d'une touche quand l'utilisateur saisi des caractère dans le champ de formulaire texte nommé task */
+                            document.getElementById('task').addEventListener('keyup', function (event) {
+                                /* 
+                                à chaque touche relachée, on compte le nombre de caractère saisis, si le nombre atteint ou dépasse 3, alors on affiche dans la console
+                                */
+                                const textValue = this.value;
+                                const postSearch = [];
+                                document.querySelector('#resultSearch tbody').innerHTML = '';
+                                if (this.value.length >= 3) {
+                                    /*
+                                    console.log(textValue);
+                                    console.log(textValue.length);
+                                    */
+                                    fetch('./jsons/posts.json')
+                                        .then(function (reponse) {
                                             console.log(reponse);
                                             return reponse.json();
-                                        }).then(function(data){
+                                        }).then(function (data) {
                                             /*console.log(data);*/
-                                            data.map(function(post){
+                                            data.map(function (post) {
                                                 /*console.log(typeof post);*/
-                                                if(post.title.indexOf(textValue) > -1){
+                                                if (post.title.indexOf(textValue) > -1) {
                                                     /*
                                                     console.log(textValue);
                                                     console.log(post.title);
@@ -187,7 +189,7 @@
                                                 }
                                             });
                                             /*console.log(postSearch);*/
-                                            postSearch.map(function(post){
+                                            postSearch.map(function (post) {
                                                 /* console.log(post); */
                                                 const tr = document.createElement('tr');
                                                 const tdUserId = document.createElement('td');
@@ -206,68 +208,68 @@
                                             });
                                         })
 
-                                    }
-                                    /* à chaque touche relachée, si l'évent nous indique que la touche est celle identifié par sa clef (key) comme étant "Enter", alors, on demande l'envoi du formulaire nommé testForm */
-                                    if(event.key === 'Enter'){
-                                        document.getElementById('testForm').submit();
-                                    }
-                                    
-                                });
-                            </script>
-                        </div>
+                                }
+                                /* à chaque touche relachée, si l'évent nous indique que la touche est celle identifié par sa clef (key) comme étant "Enter", alors, on demande l'envoi du formulaire nommé testForm */
+                                if (event.key === 'Enter') {
+                                    document.getElementById('testForm').submit();
+                                }
+
+                            });
+                        </script>
                     </div>
-                </section>
-                <section class="row my-2">
-                    <div class="col-lg-6">
-                        <ul class="nav nav-tabs" id="person">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#" data-target="bio">Bio</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#" data-target="books">Best Sellers</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#" data-target="picture">Portrait</a>
-                            </li>
+                </div>
+            </section>
+            <section class="row my-2">
+                <div class="col-lg-6">
+                    <ul class="nav nav-tabs" id="person">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#" data-target="bio">Bio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-target="books">Best Sellers</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-target="picture">Portrait</a>
+                        </li>
+                    </ul>
+                    <div id="bio" class="tabInfo">
+                        <h2>Bio</h2>
+                        <p>
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Animi quibusdam totam, sit
+                            officiis vel alias quaerat soluta reiciendis! Sequi enim delectus at voluptas! Amet
+                            dicta excepturi id consequuntur ducimus maxime.
+                        </p>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat nisi iste accusamus,
+                            nesciunt natus architecto hic sed, sunt nulla eveniet consectetur consequatur porro
+                            omnis rerum esse autem ducimus ipsam laudantium!
+                        </p>
+                    </div>
+                    <div id="books" class="tabInfo hidden">
+                        <h2>Books</h2>
+                        <ul>
+                            <li>sqddfwdffvb</li>
+                            <li>sqddfwdffvb</li>
+                            <li>sqddfwdffvb</li>
+                            <li>sqddfwdffvb</li>
+                            <li>sqddfwdffvb</li>
+                            <li>sqddfwdffvb</li>
+                            <li>sqddfwdffvb</li>
                         </ul>
-                        <div id="bio" class="tabInfo">
-                            <h2>Bio</h2>
-                            <p>
-                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Animi quibusdam totam, sit
-                                officiis vel alias quaerat soluta reiciendis! Sequi enim delectus at voluptas! Amet
-                                dicta excepturi id consequuntur ducimus maxime.
-                            </p>
-                            <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat nisi iste accusamus,
-                                nesciunt natus architecto hic sed, sunt nulla eveniet consectetur consequatur porro
-                                omnis rerum esse autem ducimus ipsam laudantium!
-                            </p>
-                        </div>
-                        <div id="books" class="tabInfo hidden">
-                            <h2>Books</h2>
-                            <ul>
-                                <li>sqddfwdffvb</li>
-                                <li>sqddfwdffvb</li>
-                                <li>sqddfwdffvb</li>
-                                <li>sqddfwdffvb</li>
-                                <li>sqddfwdffvb</li>
-                                <li>sqddfwdffvb</li>
-                                <li>sqddfwdffvb</li>
-                            </ul>
-                        </div>
-                        <div id="picture" class="tabInfo hidden">
-                            <h2>Portrait</h2>
-                            <img src="./galerie/20070830/sorcier01.jpg" class="img-fluid" />
-                        </div>
                     </div>
-                </section>
-            </main>
+                    <div id="picture" class="tabInfo hidden">
+                        <h2>Portrait</h2>
+                        <img src="./galerie/20070830/sorcier01.jpg" class="img-fluid" />
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <footer class="bg-dark text-white" style="height: 50px;">
+        <div class="container ">
+            &copy; H.O.P.
         </div>
-        <footer class="bg-dark text-white" style="height: 50px;">
-            <div class="container ">
-                &copy; H.O.P.
-            </div>
-        </footer>
-    </body>
+    </footer>
+</body>
 
 </html>

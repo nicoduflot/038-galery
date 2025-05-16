@@ -8,11 +8,10 @@
     <link rel="stylesheet" href="./css/bootstrap.css" />
     <script src="./js/bootstrap.bundle.js"></script>
     <script src="./js/chart.js"></script>
+    <link rel="stylesheet" href="./css/chart.css" />
     <script>
         window.addEventListener('DOMContentLoaded', function () {
-
             const ctx = document.getElementById('myChart');
-
             new Chart(ctx, {
                 type: 'bar',
                 data: {
@@ -86,11 +85,18 @@
     <div style="height:calc(100vh - 100px);overflow-y: auto;">
         <nav>
             <div class="container">
-                <a href="./">Galerie</a> | <a href="./carousel.html">Carousel</a> | <a href="./chartjs.html">Chart Js</a> | <a href="./tabs.html">Tabs</a>
+                <a href="./">Galerie</a> | <a href="./carousel.html">Carousel</a> | <a href="./chartjs.html">Chart Js</a> | <a href="./tabs.html">Tabs</a> | <a href="./blog.html">Blog</a>
             </div>
         </nav>
         <main class="container">
             <canvas id="myChart" class="w-100 h-100"></canvas>
+            <section class="row">
+                <div class="col-lg-6">
+                    <figure class="ratio ratio-29x21">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2530.2724975562614!2d3.0664544770379227!3d50.640630173651644!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c32a7673e91a9d%3A0xa07100141e28573b!2s46%20Rue%20des%20Canonniers%2C%2059000%20Lille!5e0!3m2!1sfr!2sfr!4v1747382967795!5m2!1sfr!2sfr" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </figure>
+                </div>
+            </section>
         </main>
     </div>
     <footer class="bg-dark text-white" style="height: 50px;">
