@@ -11,25 +11,49 @@
     <link rel="stylesheet" href="./css/chart.css" />
     <script>
         window.addEventListener('DOMContentLoaded', function () {
-            const ctx = document.getElementById('myChart');
-            new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-                    datasets: [{
-                        label: '# of Votes',
-                        data: [12, 19, 3, 5, 2, 3],
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    scales: {
-                        y: {
-                            beginAtZero: true
+
+            fetch('./csv/stats-films.csv')
+            .then(reponse=>{
+                return reponse.text();
+            })
+            .then((data)=>{
+                const tabData = data.split('\r\n');
+                console.log(tabData);
+                const labels = [];
+                const datas = [];
+                let firstLine = true;
+                tabData.map(rawLine=>{
+                    if(!firstLine){
+                        const line = rawLine.split(';');
+                        labels.push(line[0]);
+                        datas.push(line[1]);
+                    }else{
+                        firstLine = false;
+                    }
+                });
+                
+                const ctx = document.getElementById('myChart');
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: labels/*['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange']*/,
+                        datasets: [{
+                            label: 'Films par année',
+                            data: datas /*[12, 19, 3, 5, 2, 3]*/,
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
                         }
                     }
-                }
+                });
+                
             });
+
             /*
             const myChart = new Chart(ctx, {
                 type: 'line',
